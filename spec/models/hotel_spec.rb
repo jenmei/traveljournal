@@ -21,5 +21,15 @@ describe Hotel do
     @hotel.should respond_to(:city)
   end
   
+  it "should return visited hotels" do
+    @visited_hotel = Hotel.create(
+      :name => "Been There Motel", :visited => true
+    )
+    @unvisited_hotel = Hotel.create(
+      :name => "Let's Go Lodge", :visited => false
+    )
+    Hotel.yet_to_visit.should eq([@unvisited_hotel])
+  end
+  
 end
 
