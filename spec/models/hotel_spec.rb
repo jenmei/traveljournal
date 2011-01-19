@@ -15,5 +15,11 @@ describe Hotel do
     @hotel = Hotel.new(:name => "A")
     @hotel.should_not be_valid    
   end
+
+  it "should have a city" do
+    @hotel = Hotel.new()
+    @hotel.should respond_to(:city)
+  end
+  
 end
 
