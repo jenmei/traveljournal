@@ -1,0 +1,813 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: ActiveRecord::QueryMethods</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">ActiveRecord::QueryMethods</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/Users/jenmei/_rvm/gems/ruby-1_8_7-p302@traveljournal/gems/activerecord-3_0_3/lib/active_record/relation/query_methods_rb.html">
+                /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M001440">arel</a>&nbsp;&nbsp;
+      <a href="#M001442">build_arel</a>&nbsp;&nbsp;
+      <a href="#M001436">create_with</a>&nbsp;&nbsp;
+      <a href="#M001441">custom_join_sql</a>&nbsp;&nbsp;
+      <a href="#M001423">eager_load</a>&nbsp;&nbsp;
+      <a href="#M001438">extending</a>&nbsp;&nbsp;
+      <a href="#M001437">from</a>&nbsp;&nbsp;
+      <a href="#M001426">group</a>&nbsp;&nbsp;
+      <a href="#M001431">having</a>&nbsp;&nbsp;
+      <a href="#M001422">includes</a>&nbsp;&nbsp;
+      <a href="#M001429">joins</a>&nbsp;&nbsp;
+      <a href="#M001432">limit</a>&nbsp;&nbsp;
+      <a href="#M001434">lock</a>&nbsp;&nbsp;
+      <a href="#M001433">offset</a>&nbsp;&nbsp;
+      <a href="#M001427">order</a>&nbsp;&nbsp;
+      <a href="#M001424">preload</a>&nbsp;&nbsp;
+      <a href="#M001435">readonly</a>&nbsp;&nbsp;
+      <a href="#M001428">reorder</a>&nbsp;&nbsp;
+      <a href="#M001439">reverse_order</a>&nbsp;&nbsp;
+      <a href="#M001425">select</a>&nbsp;&nbsp;
+      <a href="#M001430">where</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">create_with_value</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">eager_load_values</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">from_value</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">group_values</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">having_values</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">includes_values</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">joins_values</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">limit_value</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">lock_value</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">offset_value</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">order_values</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">preload_values</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">readonly_value</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">reorder_flag</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">select_values</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">where_values</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M001440" class="method-detail">
+        <a name="M001440"></a>
+
+        <div class="method-heading">
+          <a href="#M001440" class="method-signature">
+          <span class="method-name">arel</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001440-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001440-source">
+<pre>
+     <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 149</span>
+149:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">arel</span>
+150:       <span class="ruby-ivar">@arel</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">build_arel</span>
+151:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001442" class="method-detail">
+        <a name="M001442"></a>
+
+        <div class="method-heading">
+          <a href="#M001442" class="method-signature">
+          <span class="method-name">build_arel</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001442-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001442-source">
+<pre>
+     <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 174</span>
+174:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">build_arel</span>
+175:       <span class="ruby-identifier">arel</span> = <span class="ruby-identifier">table</span>
+176: 
+177:       <span class="ruby-identifier">arel</span> = <span class="ruby-identifier">build_joins</span>(<span class="ruby-identifier">arel</span>, <span class="ruby-ivar">@joins_values</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@joins_values</span>.<span class="ruby-identifier">empty?</span>
+178: 
+179:       (<span class="ruby-ivar">@where_values</span> <span class="ruby-operator">-</span> [<span class="ruby-value str">''</span>]).<span class="ruby-identifier">uniq</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">where</span><span class="ruby-operator">|</span>
+180:         <span class="ruby-identifier">where</span> = <span class="ruby-constant">Arel</span>.<span class="ruby-identifier">sql</span>(<span class="ruby-identifier">where</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-constant">String</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">where</span>
+181:         <span class="ruby-identifier">arel</span> = <span class="ruby-identifier">arel</span>.<span class="ruby-identifier">where</span>(<span class="ruby-constant">Arel</span><span class="ruby-operator">::</span><span class="ruby-constant">Nodes</span><span class="ruby-operator">::</span><span class="ruby-constant">Grouping</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">where</span>))
+182:       <span class="ruby-keyword kw">end</span>
+183: 
+184:       <span class="ruby-identifier">arel</span> = <span class="ruby-identifier">arel</span>.<span class="ruby-identifier">having</span>(<span class="ruby-operator">*</span><span class="ruby-ivar">@having_values</span>.<span class="ruby-identifier">uniq</span>.<span class="ruby-identifier">reject</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">h</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>.<span class="ruby-identifier">blank?</span>}) <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@having_values</span>.<span class="ruby-identifier">empty?</span>
+185: 
+186:       <span class="ruby-identifier">arel</span> = <span class="ruby-identifier">arel</span>.<span class="ruby-identifier">take</span>(<span class="ruby-ivar">@limit_value</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@limit_value</span>
+187:       <span class="ruby-identifier">arel</span> = <span class="ruby-identifier">arel</span>.<span class="ruby-identifier">skip</span>(<span class="ruby-ivar">@offset_value</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@offset_value</span>
+188: 
+189:       <span class="ruby-identifier">arel</span> = <span class="ruby-identifier">arel</span>.<span class="ruby-identifier">group</span>(<span class="ruby-operator">*</span><span class="ruby-ivar">@group_values</span>.<span class="ruby-identifier">uniq</span>.<span class="ruby-identifier">reject</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">g</span><span class="ruby-operator">|</span> <span class="ruby-identifier">g</span>.<span class="ruby-identifier">blank?</span>}) <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@group_values</span>.<span class="ruby-identifier">empty?</span>
+190: 
+191:       <span class="ruby-identifier">arel</span> = <span class="ruby-identifier">arel</span>.<span class="ruby-identifier">order</span>(<span class="ruby-operator">*</span><span class="ruby-ivar">@order_values</span>.<span class="ruby-identifier">uniq</span>.<span class="ruby-identifier">reject</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">blank?</span>}) <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@order_values</span>.<span class="ruby-identifier">empty?</span>
+192: 
+193:       <span class="ruby-identifier">arel</span> = <span class="ruby-identifier">build_select</span>(<span class="ruby-identifier">arel</span>, <span class="ruby-ivar">@select_values</span>.<span class="ruby-identifier">uniq</span>)
+194: 
+195:       <span class="ruby-identifier">arel</span> = <span class="ruby-identifier">arel</span>.<span class="ruby-identifier">from</span>(<span class="ruby-ivar">@from_value</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@from_value</span>
+196:       <span class="ruby-identifier">arel</span> = <span class="ruby-identifier">arel</span>.<span class="ruby-identifier">lock</span>(<span class="ruby-ivar">@lock_value</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@lock_value</span>
+197: 
+198:       <span class="ruby-identifier">arel</span>
+199:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001436" class="method-detail">
+        <a name="M001436"></a>
+
+        <div class="method-heading">
+          <a href="#M001436" class="method-signature">
+          <span class="method-name">create_with</span><span class="method-args">(value)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001436-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001436-source">
+<pre>
+     <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 118</span>
+118:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_with</span>(<span class="ruby-identifier">value</span>)
+119:       <span class="ruby-identifier">relation</span> = <span class="ruby-identifier">clone</span>
+120:       <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">create_with_value</span> = <span class="ruby-identifier">value</span>
+121:       <span class="ruby-identifier">relation</span>
+122:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001441" class="method-detail">
+        <a name="M001441"></a>
+
+        <div class="method-heading">
+          <a href="#M001441" class="method-signature">
+          <span class="method-name">custom_join_sql</span><span class="method-args">(*joins)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001441-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001441-source">
+<pre>
+     <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 153</span>
+153:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">custom_join_sql</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">joins</span>)
+154:       <span class="ruby-identifier">arel</span> = <span class="ruby-identifier">table</span>.<span class="ruby-identifier">select_manager</span>
+155: 
+156:       <span class="ruby-identifier">joins</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">join</span><span class="ruby-operator">|</span>
+157:         <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">join</span>.<span class="ruby-identifier">blank?</span>
+158: 
+159:         <span class="ruby-ivar">@implicit_readonly</span> = <span class="ruby-keyword kw">true</span>
+160: 
+161:         <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">join</span>
+162:         <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Array</span>
+163:           <span class="ruby-identifier">join</span> = <span class="ruby-constant">Arel</span>.<span class="ruby-identifier">sql</span>(<span class="ruby-identifier">join</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">' '</span>)) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">array_of_strings?</span>(<span class="ruby-identifier">join</span>)
+164:         <span class="ruby-keyword kw">when</span> <span class="ruby-constant">String</span>
+165:           <span class="ruby-identifier">join</span> = <span class="ruby-constant">Arel</span>.<span class="ruby-identifier">sql</span>(<span class="ruby-identifier">join</span>)
+166:         <span class="ruby-keyword kw">end</span>
+167: 
+168:         <span class="ruby-identifier">arel</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">join</span>)
+169:       <span class="ruby-keyword kw">end</span>
+170: 
+171:       <span class="ruby-identifier">arel</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-identifier">arel</span>)
+172:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001423" class="method-detail">
+        <a name="M001423"></a>
+
+        <div class="method-heading">
+          <a href="#M001423" class="method-signature">
+          <span class="method-name">eager_load</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001423-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001423-source">
+<pre>
+    <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 22</span>
+22:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">eager_load</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+23:       <span class="ruby-identifier">relation</span> = <span class="ruby-identifier">clone</span>
+24:       <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">eager_load_values</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">args</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">blank?</span>
+25:       <span class="ruby-identifier">relation</span>
+26:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001438" class="method-detail">
+        <a name="M001438"></a>
+
+        <div class="method-heading">
+          <a href="#M001438" class="method-signature">
+          <span class="method-name">extending</span><span class="method-args">(*modules, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001438-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001438-source">
+<pre>
+     <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 130</span>
+130:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extending</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">modules</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+131:       <span class="ruby-identifier">modules</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Module</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+132: 
+133:       <span class="ruby-identifier">relation</span> = <span class="ruby-identifier">clone</span>
+134:       <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:apply_modules</span>, <span class="ruby-identifier">modules</span>.<span class="ruby-identifier">flatten</span>)
+135:       <span class="ruby-identifier">relation</span>
+136:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001437" class="method-detail">
+        <a name="M001437"></a>
+
+        <div class="method-heading">
+          <a href="#M001437" class="method-signature">
+          <span class="method-name">from</span><span class="method-args">(value)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001437-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001437-source">
+<pre>
+     <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 124</span>
+124:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">from</span>(<span class="ruby-identifier">value</span>)
+125:       <span class="ruby-identifier">relation</span> = <span class="ruby-identifier">clone</span>
+126:       <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">from_value</span> = <span class="ruby-identifier">value</span>
+127:       <span class="ruby-identifier">relation</span>
+128:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001426" class="method-detail">
+        <a name="M001426"></a>
+
+        <div class="method-heading">
+          <a href="#M001426" class="method-signature">
+          <span class="method-name">group</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001426-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001426-source">
+<pre>
+    <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 44</span>
+44:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">group</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+45:       <span class="ruby-identifier">relation</span> = <span class="ruby-identifier">clone</span>
+46:       <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">group_values</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">flatten</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">blank?</span>
+47:       <span class="ruby-identifier">relation</span>
+48:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001431" class="method-detail">
+        <a name="M001431"></a>
+
+        <div class="method-heading">
+          <a href="#M001431" class="method-signature">
+          <span class="method-name">having</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001431-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001431-source">
+<pre>
+    <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 81</span>
+81:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">having</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+82:       <span class="ruby-identifier">relation</span> = <span class="ruby-identifier">clone</span>
+83:       <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">having_values</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">build_where</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">blank?</span>
+84:       <span class="ruby-identifier">relation</span>
+85:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001422" class="method-detail">
+        <a name="M001422"></a>
+
+        <div class="method-heading">
+          <a href="#M001422" class="method-signature">
+          <span class="method-name">includes</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001422-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001422-source">
+<pre>
+    <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 12</span>
+12:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">includes</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+13:       <span class="ruby-identifier">args</span>.<span class="ruby-identifier">reject!</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">blank?</span> }
+14: 
+15:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">clone</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span>
+16: 
+17:       <span class="ruby-identifier">relation</span> = <span class="ruby-identifier">clone</span>
+18:       <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">includes_values</span> = (<span class="ruby-identifier">relation</span>.<span class="ruby-identifier">includes_values</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">args</span>).<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">uniq</span>
+19:       <span class="ruby-identifier">relation</span>
+20:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001429" class="method-detail">
+        <a name="M001429"></a>
+
+        <div class="method-heading">
+          <a href="#M001429" class="method-signature">
+          <span class="method-name">joins</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001429-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001429-source">
+<pre>
+    <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 66</span>
+66:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">joins</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+67:       <span class="ruby-identifier">relation</span> = <span class="ruby-identifier">clone</span>
+68: 
+69:       <span class="ruby-identifier">args</span>.<span class="ruby-identifier">flatten!</span>
+70:       <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">joins_values</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">args</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">blank?</span>
+71: 
+72:       <span class="ruby-identifier">relation</span>
+73:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001432" class="method-detail">
+        <a name="M001432"></a>
+
+        <div class="method-heading">
+          <a href="#M001432" class="method-signature">
+          <span class="method-name">limit</span><span class="method-args">(value)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001432-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001432-source">
+<pre>
+    <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 87</span>
+87:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">limit</span>(<span class="ruby-identifier">value</span>)
+88:       <span class="ruby-identifier">relation</span> = <span class="ruby-identifier">clone</span>
+89:       <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">limit_value</span> = <span class="ruby-identifier">value</span>
+90:       <span class="ruby-identifier">relation</span>
+91:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001434" class="method-detail">
+        <a name="M001434"></a>
+
+        <div class="method-heading">
+          <a href="#M001434" class="method-signature">
+          <span class="method-name">lock</span><span class="method-args">(locks = true)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001434-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001434-source">
+<pre>
+     <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 99</span>
+ 99:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">lock</span>(<span class="ruby-identifier">locks</span> = <span class="ruby-keyword kw">true</span>)
+100:       <span class="ruby-identifier">relation</span> = <span class="ruby-identifier">clone</span>
+101: 
+102:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">locks</span>
+103:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">String</span>, <span class="ruby-constant">TrueClass</span>, <span class="ruby-constant">NilClass</span>
+104:         <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">lock_value</span> = <span class="ruby-identifier">locks</span> <span class="ruby-operator">||</span> <span class="ruby-keyword kw">true</span>
+105:       <span class="ruby-keyword kw">else</span>
+106:         <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">lock_value</span> = <span class="ruby-keyword kw">false</span>
+107:       <span class="ruby-keyword kw">end</span>
+108: 
+109:       <span class="ruby-identifier">relation</span>
+110:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001433" class="method-detail">
+        <a name="M001433"></a>
+
+        <div class="method-heading">
+          <a href="#M001433" class="method-signature">
+          <span class="method-name">offset</span><span class="method-args">(value)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001433-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001433-source">
+<pre>
+    <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 93</span>
+93:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">offset</span>(<span class="ruby-identifier">value</span>)
+94:       <span class="ruby-identifier">relation</span> = <span class="ruby-identifier">clone</span>
+95:       <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">offset_value</span> = <span class="ruby-identifier">value</span>
+96:       <span class="ruby-identifier">relation</span>
+97:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001427" class="method-detail">
+        <a name="M001427"></a>
+
+        <div class="method-heading">
+          <a href="#M001427" class="method-signature">
+          <span class="method-name">order</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001427-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001427-source">
+<pre>
+    <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 50</span>
+50:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">order</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+51:       <span class="ruby-identifier">relation</span> = <span class="ruby-identifier">clone</span>
+52:       <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">order_values</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">flatten</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">blank?</span>
+53:       <span class="ruby-identifier">relation</span>
+54:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001424" class="method-detail">
+        <a name="M001424"></a>
+
+        <div class="method-heading">
+          <a href="#M001424" class="method-signature">
+          <span class="method-name">preload</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001424-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001424-source">
+<pre>
+    <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 28</span>
+28:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">preload</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+29:       <span class="ruby-identifier">relation</span> = <span class="ruby-identifier">clone</span>
+30:       <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">preload_values</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">args</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">blank?</span>
+31:       <span class="ruby-identifier">relation</span>
+32:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001435" class="method-detail">
+        <a name="M001435"></a>
+
+        <div class="method-heading">
+          <a href="#M001435" class="method-signature">
+          <span class="method-name">readonly</span><span class="method-args">(value = true)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001435-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001435-source">
+<pre>
+     <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 112</span>
+112:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">readonly</span>(<span class="ruby-identifier">value</span> = <span class="ruby-keyword kw">true</span>)
+113:       <span class="ruby-identifier">relation</span> = <span class="ruby-identifier">clone</span>
+114:       <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">readonly_value</span> = <span class="ruby-identifier">value</span>
+115:       <span class="ruby-identifier">relation</span>
+116:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001428" class="method-detail">
+        <a name="M001428"></a>
+
+        <div class="method-heading">
+          <a href="#M001428" class="method-signature">
+          <span class="method-name">reorder</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001428-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001428-source">
+<pre>
+    <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 56</span>
+56:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reorder</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+57:       <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Deprecation</span>.<span class="ruby-identifier">warn</span> <span class="ruby-value str">&quot;reorder is deprecated. Please use except(:order).order(...) instead&quot;</span>, <span class="ruby-identifier">caller</span>
+58:       <span class="ruby-identifier">relation</span> = <span class="ruby-identifier">clone</span>
+59:       <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">blank?</span>
+60:         <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">order_values</span> = <span class="ruby-identifier">args</span>
+61:         <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">reorder_flag</span> = <span class="ruby-keyword kw">true</span>
+62:       <span class="ruby-keyword kw">end</span>
+63:       <span class="ruby-identifier">relation</span>
+64:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001439" class="method-detail">
+        <a name="M001439"></a>
+
+        <div class="method-heading">
+          <a href="#M001439" class="method-signature">
+          <span class="method-name">reverse_order</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001439-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001439-source">
+<pre>
+     <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 138</span>
+138:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reverse_order</span>
+139:       <span class="ruby-identifier">order_clause</span> = <span class="ruby-identifier">arel</span>.<span class="ruby-identifier">order_clauses</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">', '</span>)
+140:       <span class="ruby-identifier">relation</span> = <span class="ruby-identifier">except</span>(<span class="ruby-identifier">:order</span>)
+141: 
+142:       <span class="ruby-identifier">order</span> = <span class="ruby-identifier">order_clause</span>.<span class="ruby-identifier">blank?</span> <span class="ruby-value">?
+143: </span>        <span class="ruby-node">&quot;#{@klass.table_name}.#{@klass.primary_key} DESC&quot;</span> <span class="ruby-operator">:</span>
+144:         <span class="ruby-identifier">reverse_sql_order</span>(<span class="ruby-identifier">order_clause</span>)
+145: 
+146:       <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">order</span>(<span class="ruby-constant">Arel</span><span class="ruby-operator">::</span><span class="ruby-constant">SqlLiteral</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">order</span>))
+147:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001425" class="method-detail">
+        <a name="M001425"></a>
+
+        <div class="method-heading">
+          <a href="#M001425" class="method-signature">
+          <span class="method-name">select</span><span class="method-args">(value = Proc.new)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001425-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001425-source">
+<pre>
+    <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 34</span>
+34:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">select</span>(<span class="ruby-identifier">value</span> = <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span>)
+35:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+36:         <span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">block_args</span><span class="ruby-operator">|</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">call</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">block_args</span>) }
+37:       <span class="ruby-keyword kw">else</span>
+38:         <span class="ruby-identifier">relation</span> = <span class="ruby-identifier">clone</span>
+39:         <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">select_values</span> <span class="ruby-operator">+=</span> <span class="ruby-constant">Array</span>.<span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">value</span>)
+40:         <span class="ruby-identifier">relation</span>
+41:       <span class="ruby-keyword kw">end</span>
+42:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001430" class="method-detail">
+        <a name="M001430"></a>
+
+        <div class="method-heading">
+          <a href="#M001430" class="method-signature">
+          <span class="method-name">where</span><span class="method-args">(opts, *rest)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001430-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001430-source">
+<pre>
+    <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activerecord-3.0.3/lib/active_record/relation/query_methods.rb, line 75</span>
+75:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">where</span>(<span class="ruby-identifier">opts</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">rest</span>)
+76:       <span class="ruby-identifier">relation</span> = <span class="ruby-identifier">clone</span>
+77:       <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">where_values</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">build_where</span>(<span class="ruby-identifier">opts</span>, <span class="ruby-identifier">rest</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">blank?</span>
+78:       <span class="ruby-identifier">relation</span>
+79:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: ActiveModel::Serializers::JSON</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">ActiveModel::Serializers::JSON</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/Users/jenmei/_rvm/gems/ruby-1_8_7-p302@traveljournal/gems/activemodel-3_0_3/lib/active_model/serializers/json_rb.html">
+                /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activemodel-3.0.3/lib/active_model/serializers/json.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M001656">as_json</a>&nbsp;&nbsp;
+      <a href="#M001657">from_json</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="../Serialization.html">ActiveModel::Serialization</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M001656" class="method-detail">
+        <a name="M001656"></a>
+
+        <div class="method-heading">
+          <a href="#M001656" class="method-signature">
+          <span class="method-name">as_json</span><span class="method-args">(options = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a <a href="JSON.html">JSON</a> string representing the model. Some
+configuration can be passed through <tt>options</tt>.
+</p>
+<p>
+The option <tt>ActiveModel::Base.include_root_in_json</tt> controls the
+top-level behavior of <tt>to_json</tt>. It is <tt>true</tt> by default.
+When it is <tt>true</tt>, <tt>to_json</tt> will emit a single root node
+named after the object&#8216;s type. For example:
+</p>
+<pre>
+  konata = User.find(1)
+  konata.to_json
+  # =&gt; { &quot;user&quot;: {&quot;id&quot;: 1, &quot;name&quot;: &quot;Konata Izumi&quot;, &quot;age&quot;: 16,
+                  &quot;created_at&quot;: &quot;2006/08/01&quot;, &quot;awesome&quot;: true} }
+
+  ActiveRecord::Base.include_root_in_json = false
+  konata.to_json
+  # =&gt; {&quot;id&quot;: 1, &quot;name&quot;: &quot;Konata Izumi&quot;, &quot;age&quot;: 16,
+        &quot;created_at&quot;: &quot;2006/08/01&quot;, &quot;awesome&quot;: true}
+</pre>
+<p>
+The remainder of the examples in this section assume include_root_in_json
+is set to <tt>false</tt>.
+</p>
+<p>
+Without any <tt>options</tt>, the returned <a href="JSON.html">JSON</a>
+string will include all the model&#8216;s attributes. For example:
+</p>
+<pre>
+  konata = User.find(1)
+  konata.to_json
+  # =&gt; {&quot;id&quot;: 1, &quot;name&quot;: &quot;Konata Izumi&quot;, &quot;age&quot;: 16,
+        &quot;created_at&quot;: &quot;2006/08/01&quot;, &quot;awesome&quot;: true}
+</pre>
+<p>
+The <tt>:only</tt> and <tt>:except</tt> options can be used to limit the
+attributes included, and work similar to the <tt>attributes</tt> method.
+For example:
+</p>
+<pre>
+  konata.to_json(:only =&gt; [ :id, :name ])
+  # =&gt; {&quot;id&quot;: 1, &quot;name&quot;: &quot;Konata Izumi&quot;}
+
+  konata.to_json(:except =&gt; [ :id, :created_at, :age ])
+  # =&gt; {&quot;name&quot;: &quot;Konata Izumi&quot;, &quot;awesome&quot;: true}
+</pre>
+<p>
+To include any methods on the model, use <tt>:methods</tt>.
+</p>
+<pre>
+  konata.to_json(:methods =&gt; :permalink)
+  # =&gt; {&quot;id&quot;: 1, &quot;name&quot;: &quot;Konata Izumi&quot;, &quot;age&quot;: 16,
+        &quot;created_at&quot;: &quot;2006/08/01&quot;, &quot;awesome&quot;: true,
+        &quot;permalink&quot;: &quot;1-konata-izumi&quot;}
+</pre>
+<p>
+To include associations, use <tt>:include</tt>.
+</p>
+<pre>
+  konata.to_json(:include =&gt; :posts)
+  # =&gt; {&quot;id&quot;: 1, &quot;name&quot;: &quot;Konata Izumi&quot;, &quot;age&quot;: 16,
+        &quot;created_at&quot;: &quot;2006/08/01&quot;, &quot;awesome&quot;: true,
+        &quot;posts&quot;: [{&quot;id&quot;: 1, &quot;author_id&quot;: 1, &quot;title&quot;: &quot;Welcome to the weblog&quot;},
+                  {&quot;id&quot;: 2, author_id: 1, &quot;title&quot;: &quot;So I was thinking&quot;}]}
+</pre>
+<p>
+2nd level and higher order associations work as well:
+</p>
+<pre>
+  konata.to_json(:include =&gt; { :posts =&gt; {
+                                 :include =&gt; { :comments =&gt; {
+                                               :only =&gt; :body } },
+                                 :only =&gt; :title } })
+  # =&gt; {&quot;id&quot;: 1, &quot;name&quot;: &quot;Konata Izumi&quot;, &quot;age&quot;: 16,
+        &quot;created_at&quot;: &quot;2006/08/01&quot;, &quot;awesome&quot;: true,
+        &quot;posts&quot;: [{&quot;comments&quot;: [{&quot;body&quot;: &quot;1st post!&quot;}, {&quot;body&quot;: &quot;Second!&quot;}],
+                   &quot;title&quot;: &quot;Welcome to the weblog&quot;},
+                  {&quot;comments&quot;: [{&quot;body&quot;: &quot;Don't think too hard&quot;}],
+                   &quot;title&quot;: &quot;So I was thinking&quot;}]}
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001656-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001656-source">
+<pre>
+    <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activemodel-3.0.3/lib/active_model/serializers/json.rb, line 83</span>
+83:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">as_json</span>(<span class="ruby-identifier">options</span> = <span class="ruby-keyword kw">nil</span>)
+84:         <span class="ruby-identifier">hash</span> = <span class="ruby-identifier">serializable_hash</span>(<span class="ruby-identifier">options</span>)
+85: 
+86:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">include_root_in_json</span>
+87:           <span class="ruby-identifier">custom_root</span> = <span class="ruby-identifier">options</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:root</span>]
+88:           <span class="ruby-identifier">hash</span> = { <span class="ruby-identifier">custom_root</span> <span class="ruby-operator">||</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">model_name</span>.<span class="ruby-identifier">element</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">hash</span> }
+89:         <span class="ruby-keyword kw">end</span>
+90: 
+91:         <span class="ruby-identifier">hash</span>
+92:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M001657" class="method-detail">
+        <a name="M001657"></a>
+
+        <div class="method-heading">
+          <a href="#M001657" class="method-signature">
+          <span class="method-name">from_json</span><span class="method-args">(json)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M001657-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M001657-source">
+<pre>
+    <span class="ruby-comment cmt"># File /Users/jenmei/.rvm/gems/ruby-1.8.7-p302@traveljournal/gems/activemodel-3.0.3/lib/active_model/serializers/json.rb, line 94</span>
+94:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">from_json</span>(<span class="ruby-identifier">json</span>)
+95:         <span class="ruby-identifier">hash</span> = <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">JSON</span>.<span class="ruby-identifier">decode</span>(<span class="ruby-identifier">json</span>)
+96:         <span class="ruby-identifier">hash</span> = <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">first</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">include_root_in_json</span>
+97:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">attributes</span> = <span class="ruby-identifier">hash</span>
+98:         <span class="ruby-keyword kw">self</span>
+99:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
