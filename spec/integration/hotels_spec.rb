@@ -3,11 +3,13 @@ require 'spec_helper'
 describe "hotels" do
   describe "listing hotels" do
     before do
-      @hotel1 = Hotel.create(
+      @hotel1 = Factory.create(
+        :hotel, 
         :name => "The Lakes"
       )
-      @hotel2 = Hotel.create(
-        :name => "The St. Clair"
+      @hotel2 = Factory.create(
+        :hotel, 
+        :name => "St. Clair Hotel"
       )
       visit "/hotels"
     end
