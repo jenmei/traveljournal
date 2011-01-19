@@ -1,5 +1,3 @@
-%h1 Hotels
+%h1 Hotels as of #{day_today}
 %ul#hotels
-  %li Hilton
-  %li Hyatt
-  %li Joe’s Inn
+  = render( :partial => "hotel", :collection => @hotels )
