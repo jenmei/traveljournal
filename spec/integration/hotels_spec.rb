@@ -22,5 +22,16 @@ describe "hotels" do
       hotel_names.should include('The Lakes')
       hotel_names.should include('The St. Clair')
     end
+
+    describe "when clicking on a link" do
+      before do
+        click_link('The Lakes')
+      end
+
+      it "should show detailed information for our hotel" do
+        page.should have_xpath("//h1[.='The Lakes']")
+      end
+    end
   end
+
 end
