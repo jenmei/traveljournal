@@ -11,4 +11,5 @@ group :test, :development do
   gem 'RedCloth', '>= 4.1.1'
   gem 'capybara'
   gem 'ruby-debug'
+  gem 'metric_fu'
 end
