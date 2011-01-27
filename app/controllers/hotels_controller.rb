@@ -1,5 +1,5 @@
 class HotelsController < ApplicationController
-  respond_to :html, :xml
+  respond_to :html, :xml, :json
 
   before_filter :load_hotel, :except => [:new, :index, :create]
 

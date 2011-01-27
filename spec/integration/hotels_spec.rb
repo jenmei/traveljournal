@@ -47,6 +47,18 @@ describe "hotels" do
         page.should have_xpath('//hotels[@type="array"]')
       end
     end
+
+    describe "when the requested format is json" do
+      before do
+        visit "/hotels.json"
+      end
+
+      it "should render the found hotels as json" do
+        hotels = JSON.parse(page.body)
+        hotels.should be_an(Array)
+        hotels.first["hotel"]["name"].should == "The Lakes"
+      end
+    end
   end
 
 end
