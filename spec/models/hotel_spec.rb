@@ -2,11 +2,14 @@ require 'spec_helper'
 
 describe Hotel do
   before do
-    @detroit = City.create(:name => "detroit")
+    @detroit = Factory.create(:city, :name => "detroit")
   end
 
   describe "validations" do
     it "should be valid with valid attributes" do
+      # This should probably stay the same, since a factory
+      # would automatically be valid. Unless, of course,
+      # we wanted to test the factory. :-)
       @st_clair = Hotel.new(
         :name => "The St. Clair",
         :city => @detroit
@@ -16,7 +19,7 @@ describe Hotel do
 
     describe "invalid cases" do
       before do
-        @hotel = Hotel.new
+        @hotel = Hotel.new # This should be the same since we want it to be invalid
         @hotel.should_not be_valid # Need to call valid so that we'll have errors, if any
       end
 
@@ -40,16 +43,8 @@ describe Hotel do
 
   describe "#yet_to_visit" do
     before do
-      @visited_hotel = Hotel.create(
-        :name => "Been There Motel",
-        :visited => true,
-        :city => @detroit
-      )
-      @unvisited_hotel = Hotel.create(
-        :name => "Let's Go Lodge",
-        :visited => false,
-        :city => @detroit
-      )
+      @visited_hotel = Factory.create( :hotel, :visited => true )
+      @unvisited_hotel = Factory.create( :hotel, :visited => false )
     end
 
     it "should return visited hotels" do
